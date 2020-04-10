@@ -8,29 +8,36 @@ function Order() {
 function Pizza(size, toppings) {
   this.size = size;
   this.toppings = toppings;
-  this.price = 0;
 }
-// Pizza.prototype.getPrice(size, toppings){
-   
-// }
+Pizza.prototype.price = function() {
+  let price = 0;
+  price += (this.size - 2)
+  if (price === 16){
+    price -= 1
+  }
+  return price
+}
+
 //----UI-----
 let order = new Order();
-function attachContactListeners()
-
 $(document).ready(function() {
   let size;
   let toppings = [];
-  attachContactListeners()
+  $("#12").click(function(){size = 12});
+  $("#14").click(function(){size = 14});
+  $("#16").click(function(){size = 16});
+  $("#18").click(function(){size = 18});
 
   $("#pizza").on("click", function(){
     showPizza()
   });
-  $("#addPie").submit(function(event) {
-    event.preventDefault();
+  $("#addPie").click(function() {
     $(".toppings:checked").each(function() {
      toppings.push($(this).val());
     })
-
+    let pizza = new Pizza(size, toppings)
+    toppings = []
+    pizza.getPrice()
   })
 
 });
