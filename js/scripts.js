@@ -12,7 +12,10 @@ function Pizza(size, toppings) {
 //----UI-----
 $(document).ready(function() {
   $("#pizza").on("click", function(){
-    console.log(`we got a pizza`);
-    
+    showPizza()
   })
 });
+
+function showPizza(){
+  $("#pizza_container").removeClass("hidden")
+}
