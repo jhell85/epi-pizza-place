@@ -6,7 +6,7 @@
 
 ## Description
 
-_This app will let a user select an order item (pizza, breadsticks, wings) customize that item and then add that item to your order and give a total price for the order._
+_This app will let a user select an order item then customize that item and add it to their order then update the price for the order and display the newly updated price._
 
 ## Setup/Installation Requirements
 
@@ -45,8 +45,10 @@ git clone https://github.com/jhell85/epi-pizza-place.git
 
 |                          Behavoir                          |       Input        |       Output       |
 | :--------------------------------------------------------: | :----------------: | :----------------: |
-|    The program takes in input and console.log a 'click'    |     'any word'     |      'click'       |
-| The program takes in any words and console logs the output | 'learning to code' | 'learning to code' |
+| The program will let a user add an item (pizza, breadsticks, wings) to their order    |     select: 'pizza'     |  brings user to an item customization menu       |
+| Once an item is selected it will let a user customize their order by adding toppings or spice level | selected: 'mushrooms' & 'pineapple'   | pizza is updated to include 'mushrooms' & 'pineapple' |
+| Once the user is finished with their item customization they can add it to their order | add item | Order total shows Pizza with mushrooms & pineapple added to their order  |
+| the program will show a cost for each item and an order total as items are added | 'item added' | price for that item and order total is reflected |
 
 ## Support
 
