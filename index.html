@@ -29,13 +29,13 @@
         <div class="d-flex">
           <div class="dropdown mr-1">
             <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
-              Offset
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Menu
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-              <a class="dropdown-item" id="pizza">Pizza</a>
-              <a class="dropdown-item" id="wings">Wings</a>
-              <a class="dropdown-item" id="breadSticks">Bread Sticks</a>
+              <span class="dropdown-item" id="pizza">Pizza</span>
+              <span class="dropdown-item" id="wings">Wings</span>
+              <span class="dropdown-item" id="breadSticks">Bread Sticks</span>
             </div>
           </div>
         </div>
@@ -43,12 +43,58 @@
     </div>
   </div>
 
-  <!-- output box  -->
-  <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <div class="output">Output here</div>
+  <!-- pizza menu  -->
+  <div id="pizza_container" class="hidden container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 box-decore">
+        <div class="d-flex">
+          <div class="dropdown mr-1">
+            <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Size
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+              <button class="dropdown-item" id="12">12"</button>
+              <button class="dropdown-item" id="14">14"</button>
+              <button class="dropdown-item" id="16">16"</button>
+              <button class="dropdown-item" id="18">18"</button>
+            </div>
+          </div>
+        </div>
+        <div class=" mt-1 form-check">
+          <input class="form-check-input " type="checkbox" value="mushroom" id="mushroom">
+          <label class="form-check-label" for="defaultCheck1">
+            Mushrooms
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input " type="checkbox" value="olive" id="olive">
+          <label class="form-check-label" for="defaultCheck1">
+            Olives
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input " type="checkbox" value="pineapple" id="pineapple">
+          <label class="form-check-label" for="defaultCheck1">
+            Pineapples
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input " type="checkbox" value="pepperoni" id="pepperoni">
+          <label class="form-check-label" for="defaultCheck1">
+            Pepperoni 
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input " type="checkbox" value="sausage" id="sausage">
+          <label class="form-check-label" for="defaultCheck1">
+            Sausage
+          </label>
+        </div>
+        
+
+      </div>
     </div>
-  </div>
   </div>
 </body>
 
