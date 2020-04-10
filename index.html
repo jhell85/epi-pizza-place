@@ -47,7 +47,7 @@
   <div id="pizza_container" class="hidden container">
     <div class="row">
       <div class="col-md-6 offset-md-3 box-decore">
-        <form id="addPie">
+
         <div class="d-flex">
           <div class="dropdown mr-1">
             <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset"
@@ -55,10 +55,10 @@
               Size
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-              <button class="dropdown-item" id="12">12"</button>
-              <button class="dropdown-item" id="14">14"</button>
-              <button class="dropdown-item" id="16">16"</button>
-              <button class="dropdown-item" id="18">18"</button>
+              <button class="size dropdown-item" id="12">12"</button>
+              <button class="size dropdown-item" id="14">14"</button>
+              <button class="size dropdown-item" id="16">16"</button>
+              <button class="size dropdown-item" id="18">18"</button>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@
         <div class="form-check">
           <input class="form-check-input toppings" type="checkbox" value="pepperoni" id="pepperoni">
           <label class="form-check-label" for="defaultCheck1">
-            Pepperoni 
+            Pepperoni
           </label>
         </div>
         <div class="form-check">
@@ -92,8 +92,8 @@
             Sausage
           </label>
         </div>
-        <button class="mt-1 btn btn-success submit">add Pie</button>
-      </form>
+        <button id="addPie" class="mt-1 btn btn-success submit">add Pie</button>
+
       </div>
     </div>
   </div>
