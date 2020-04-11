@@ -39,12 +39,13 @@
             </div>
           </div>
         </div>
+        <div class="mt-1 text-right"id="order-total"></div>
       </div>
     </div>
   </div>
 
   <!-- pizza menu  -->
-  <div id="pizza_container" class="hidden container">
+  <div id="pizza-container" class="hidden container">
     <div class="row">
       <div class="col-md-6 offset-md-3 box-decore">
 
@@ -62,38 +63,39 @@
             </div>
           </div>
         </div>
-        <div class=" mt-1 form-check">
-          <input class="form-check-input toppings" type="checkbox" value="mushroom" id="mushroom">
-          <label class="form-check-label" for="defaultCheck1">
-            Mushrooms
-          </label>
+        <div id="toppings-div" class="hidden">
+          <div class=" mt-1 form-check">
+            <input class="form-check-input toppings" type="checkbox" value="mushrooms" id="mushroom">
+            <label class="form-check-label" for="defaultCheck1">
+              Mushrooms
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input toppings" type="checkbox" value="olives" id="olive">
+            <label class="form-check-label" for="defaultCheck1">
+              Olives
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input toppings" type="checkbox" value="pineapple" id="pineapple">
+            <label class="form-check-label" for="defaultCheck1">
+              Pineapples
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input toppings" type="checkbox" value="pepperoni" id="pepperoni">
+            <label class="form-check-label" for="defaultCheck1">
+              Pepperoni
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input toppings" type="checkbox" value="sausage" id="sausage">
+            <label class="form-check-label" for="defaultCheck1">
+              Sausage
+            </label>
+          </div>
+          <button id="addPie" class="mt-1 btn btn-success submit">add Pie</button>
         </div>
-        <div class="form-check">
-          <input class="form-check-input toppings" type="checkbox" value="olive" id="olive">
-          <label class="form-check-label" for="defaultCheck1">
-            Olives
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input toppings" type="checkbox" value="pineapple" id="pineapple">
-          <label class="form-check-label" for="defaultCheck1">
-            Pineapples
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input toppings" type="checkbox" value="pepperoni" id="pepperoni">
-          <label class="form-check-label" for="defaultCheck1">
-            Pepperoni
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input toppings" type="checkbox" value="sausage" id="sausage">
-          <label class="form-check-label" for="defaultCheck1">
-            Sausage
-          </label>
-        </div>
-        <button id="addPie" class="mt-1 btn btn-success submit">add Pie</button>
-
       </div>
     </div>
   </div>
