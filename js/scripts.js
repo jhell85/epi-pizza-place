@@ -8,6 +8,7 @@ Order.prototype.addItem = function (item) {
   item.id = this.assignId();
   this.orderTotal += item.price;
   this.items.push(item);
+  console.log(this.orderTotal);
 };
 Order.prototype.assignId = function () {
   this.currentId += 1;
@@ -15,22 +16,25 @@ Order.prototype.assignId = function () {
 };
 Order.prototype.displayItems = function () {
   this.items.forEach((item) => {
-    console.log(item);
   });
 };
 Order.prototype.getItems = function () {
   printArray = this.items.map((item) => {
     if (item.type === "pizza") {
-      if(!item.toppings){
-        return `<div class="text-left">${item.size}" Cheese pizza<br><span class="text-right">$${item.price}</span></div> `
-      }
-      return `<div class="text-right">${
-        item.size
-      }" pizza with ${item.returnToppings()} <br>$${item.price}</div>`;
-    }
+      if(item.toppings.length === 0){
+        return `<div class="text-center">${item.size}" Cheese Pizza<br><div class="text-right">$${item.price}</div></div> `
+      } else {
+        return `<div class="text-center">${item.size}" Pizza with ${item.returnToppings()}<br><div class="text-right">$${item.price}</div></div>`;
+      };
+    };
   });
   return printArray;
 };
+Order.prototype.addCustomer = function (customer) {
+  this.customer = customer
+  console.log(`customer ${this.customer.name} total: ${this.orderTotal}`);
+}
+
 
 function Pizza(size, toppings) {
   this.type = "pizza";
@@ -47,7 +51,7 @@ Pizza.prototype.getprice = function () {
     if (
       topping === "mushrooms" ||
       topping === "olives" ||
-      topping === pineapple
+      topping === "pineapple"
     ) {
       price += 1.5;
     } else if (topping === "pepperoni" || topping === "sausage") {
@@ -61,12 +65,15 @@ Pizza.prototype.returnToppings = function () {
   for (let i = 0; i < this.toppings.length; i++) {
     const topping = this.toppings[i];
     console.log(`topping:${topping} length: ${this.toppings.length} i: ${i}`);
-
-    if (this.toppings.length === i + 1) {
-      displayString = displayString.slice(0, -2);
-      displayString += ` & ${topping}`;
+    if (this.toppings.length === 1){
+      return topping
     } else {
-      displayString += `${topping}, `;
+      if (this.toppings.length === i + 1) {
+        displayString = displayString.slice(0, -2);
+        displayString += ` & ${topping}`;
+      } else {
+        displayString += `${topping}, `;
+      }
     }
   }
 
@@ -79,8 +86,15 @@ function addPizza(size, toppings) {
   order.addItem(pizza);
 }
 
+function Customer(name, address, city, zip){
+  this.name = name;
+  this.address = address;
+  this.city = city;
+  this.zip = zip;
+}
 //----UI-----
 let order = new Order();
+
 $(document).ready(function () {
   let size;
   let toppings = [];
@@ -106,7 +120,64 @@ $(document).ready(function () {
     order.displayItems();
     displayOrder();
   });
+
+  $("#sign-in").submit(function(event) {
+    event.preventDefault();
+    let name = $("#name").val()
+    let address = $("#address").val()
+    let city = $("#city").val()
+    let zip = $("#zip").val()
+    if (!checkInputs(name, address, city, zip)){
+      let customer = new Customer(name, address, city, zip);
+      order.addCustomer(customer);
+      $("#submit-div").removeClass("hidden");
+      $("#sign-in-div").addClass("hidden");
+      $("#form-check").addClass("hidden");
+    } else {
+      $("#form-check").html(`please fill out ${checkInputs(name, address, city, zip)} input fields`)
+    }
+  })
+
+  $("#order-div").replaceWith(`<div id="order-div" class="col-md-6 offset-md-3 box-decore">
+  </div>`)
 });
+
+function checkInputs(name, address, city, zip){
+  checkArray = [name,address,city,zip]
+  emptyFieldsString = ''
+  fieldsArray = []
+  for (let i = 0; i < checkArray.length; i++) {
+    const input = checkArray[i];
+    if(input === ""){
+      if(i === 0){
+        fieldsArray.push("name")
+      } else if (i === 1){
+        fieldsArray.push("address")
+      } else if (i === 2){
+        fieldsArray.push("city")
+      } else if (i === 3){
+        fieldsArray.push("zip code")
+      }
+    }
+  }
+  if(fieldsArray === []){
+    return
+  }else {
+    for (let i = 0; i < fieldsArray.length; i++) {
+      const field = fieldsArray[i];
+      if (fieldsArray.length === 1){
+        return field
+      }
+      if (fieldsArray.length === i + 1) {
+        emptyFieldsString = emptyFieldsString.slice(0, -2);
+        emptyFieldsString += ` & ${field}`;
+      } else {
+        emptyFieldsString += `${field}, `;
+      }
+    }
+    return emptyFieldsString
+  }
+}
 
 function hideDivs() {
   $("#toppings-div").addClass("hidden");
@@ -124,5 +195,6 @@ function showPizza() {
 }
 
 function displayOrder() {
-  $("#order-total").html(order.getItems());
+  $("#order-display").html(order.getItems());
+  $("#total-display").html(`<h5 class="text-right">total: $${order.orderTotal}</h5>`)
 }
