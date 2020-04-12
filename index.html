@@ -26,6 +26,39 @@
     <!-- input form  -->
     <div class="row">
       <div class="col-md-6 offset-md-3 box-decore">
+        <div id="submit-div" class="hidden">
+          <button class="btn btn-success">Submit Order</button>
+        </div>
+        <div id="form-check" class="text-center mb-1"></div>
+        <div id="sign-in-div" class="btn-group dropright">
+          <button type="button" class="mb-1 btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            sign in 
+          </button>
+          <div class="dropdown-menu">
+            <form id="sign-in" class="px-4 py-3">
+              <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" placeholder="Who are you?">
+              </div>
+              <div class="form-group">
+                <label for="address">Street address:</label>
+                <input type="text" class="form-control" id="address" placeholder="ex: 462 S Gilbert rd">
+              </div>
+              <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" class="form-control" id="city" placeholder="ex: Portland">
+              </div>
+              <div class="form-group">
+                <label for="zip">Zip Code:</label>
+                <input type="text" class="form-control" id="zip" placeholder="ex: 97209">
+              </div>
+              <button type="submit" class="btn btn-primary">Sign in</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="text-right" id="total-display"></div>
+        <div class="mt-1 text-right"id="order-display"></div>
         <div class="d-flex">
           <div class="dropdown mr-1">
             <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset"
@@ -39,7 +72,7 @@
             </div>
           </div>
         </div>
-        <div class="mt-1 text-right"id="order-total"></div>
+       
       </div>
     </div>
   </div>
