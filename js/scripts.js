@@ -22,9 +22,9 @@ Order.prototype.getItems = function () {
   printArray = this.items.map((item) => {
     if (item.type === "pizza") {
       if(item.toppings.length === 0){
-        return `<div class="text-center">${item.size}" Cheese Pizza<br><div class="text-right">$${item.price}</div></div> `
+        return `<div class="text-center">${item.size}" Cheese Pizza<br><div class="mr-5 text-right">$${item.price}</div></div> `
       } else {
-        return `<div class="text-center">${item.size}" Pizza with ${item.returnToppings()}<br><div class="text-right">$${item.price}</div></div>`;
+        return `<div class="text-center">${item.size}" Pizza with ${item.returnToppings()}<br><div class=" mr-5 text-right">$${item.price}</div></div>`;
       };
     };
   });
@@ -128,18 +128,26 @@ $(document).ready(function () {
     let city = $("#city").val()
     let zip = $("#zip").val()
     if (!checkInputs(name, address, city, zip)){
+      $("#form-check").html("")
       let customer = new Customer(name, address, city, zip);
       order.addCustomer(customer);
       $("#submit-div").removeClass("hidden");
       $("#sign-in-div").addClass("hidden");
-      $("#form-check").addClass("hidden");
+      // $("#form-check").addClass("hidden");
     } else {
       $("#form-check").html(`please fill out ${checkInputs(name, address, city, zip)} input fields`)
     }
   })
-
-  $("#order-div").replaceWith(`<div id="order-div" class="col-md-6 offset-md-3 box-decore">
-  </div>`)
+  $("#submit-order").click(function() {
+    if (order.items.length === 0){
+      $("#form-check").html(`<h5>No items added to your order</h5>`)
+    } else {
+      $("#form-check").html()
+      $("#form-check").html(`submit order form`)
+    }
+  })
+  // $("#order-div").replaceWith(`<div id="order-div" class="col-md-6 offset-md-3 box-decore">
+  // </div>`)
 });
 
 function checkInputs(name, address, city, zip){
@@ -182,6 +190,7 @@ function checkInputs(name, address, city, zip){
 function hideDivs() {
   $("#toppings-div").addClass("hidden");
   $("#pizza-container").addClass("hidden");
+  $("#form-check").html("")
 }
 
 function attachListeners() {
@@ -195,6 +204,7 @@ function showPizza() {
 }
 
 function displayOrder() {
-  $("#order-display").html(order.getItems());
-  $("#total-display").html(`<h5 class="text-right">total: $${order.orderTotal}</h5>`)
+  $("#order-display").addClass("order-background");
+  $("#order-display").html(`<div class="pt-5 mb-3">${order.getItems()}</div>`);
+  $("#total-display").html(`<h5 class="text-right pr-3">Order total: $${order.orderTotal}</h5>`)
 }
