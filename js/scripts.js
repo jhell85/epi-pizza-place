@@ -22,9 +22,9 @@ Order.prototype.getItems = function () {
   printArray = this.items.map((item) => {
     if (item.type === "pizza") {
       if(item.toppings.length === 0){
-        return `<div class="text-center">${item.size}" Cheese Pizza<br><div class="mr-5 text-right">$${item.price}</div></div> `
+        return `<div class="text-center ml-3 mr-5">${item.size}" Cheese Pizza<br><div class="mr-5 text-right">$${item.price}</div></div> `
       } else {
-        return `<div class="text-center">${item.size}" Pizza with ${item.returnToppings()}<br><div class=" mr-5 text-right">$${item.price}</div></div>`;
+        return `<div class="text-center ml-3 mr-5">${item.size}" Pizza with ${item.returnToppings()}<br><div class=" mr-5 text-right">$${item.price}</div></div>`;
       };
     };
   });
@@ -32,7 +32,6 @@ Order.prototype.getItems = function () {
 };
 Order.prototype.addCustomer = function (customer) {
   this.customer = customer
-  console.log(`customer ${this.customer.name} total: ${this.orderTotal}`);
 }
 
 
@@ -53,7 +52,7 @@ Pizza.prototype.getprice = function () {
       topping === "olives" ||
       topping === "pineapple"
     ) {
-      price += 1.5;
+      price += 1;
     } else if (topping === "pepperoni" || topping === "sausage") {
       price += 2;
     }
@@ -142,12 +141,13 @@ $(document).ready(function () {
     if (order.items.length === 0){
       $("#form-check").html(`<h5>No items added to your order</h5>`)
     } else {
-      $("#form-check").html()
-      $("#form-check").html(`submit order form`)
+      hideDivs();
+      $("#order-container").fadeOut();
+      $("#order-confirmation").addClass("order-boarder mt-3 mb-3");
+      $("#order-confirmation").html(`<h2 class=" pt-3 text-center"> Thank you for Ordering</h2><h5 class="pr-3 pt-1 text-right">delivering to:<br>${order.customer.name}<br>${order.customer.address}<br>${order.customer.city} ${order.customer.zip}</h5><h4 class="text-center">Order Details</h4><div class="pt-5 mb-3 pb-5">${order.getItems()}</div><div class="text-center">please have card or cash payment ready.</div><h4 class="pt-3 pb-3 text-right">Total: $ ${order.orderTotal}</h4>`);
+
     }
   })
-  // $("#order-div").replaceWith(`<div id="order-div" class="col-md-6 offset-md-3 box-decore">
-  // </div>`)
 });
 
 function checkInputs(name, address, city, zip){
@@ -205,6 +205,6 @@ function showPizza() {
 
 function displayOrder() {
   $("#order-display").addClass("order-background");
-  $("#order-display").html(`<div class="pt-5 mb-3">${order.getItems()}</div>`);
+  $("#order-display").html(`<div class="pt-5 mb-3 pb-5">${order.getItems()}</div>`);
   $("#total-display").html(`<h5 class="text-right pr-3">Order total: $${order.orderTotal}</h5>`)
 }
