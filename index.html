@@ -21,7 +21,7 @@
 </head>
 
 <body>
-  <div class="container">
+  <div id="order-container" class="container">
     <h1 class="text-center">Pizza Place</h1>
     <div class="row">
       <div id="order-div" class="col-md-6 offset-md-3 box-decore">
@@ -64,8 +64,8 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
               <span class="dropdown-item" id="pizza">Pizza</span>
-              <span class="dropdown-item" id="wings">Wings</span>
-              <span class="dropdown-item" id="breadSticks">Bread Sticks</span>
+              <span class="dropdown-item disabled" id="wings">Wings</span>
+              <span class="dropdown-item disabled" id="breadSticks">Bread Sticks</span>
             </div>
           </div>
           <div id="submit-div" class="hidden">
@@ -131,6 +131,10 @@
         </div>
       </div>
     </div>
+  </div>
+<!-- order confirmation -->
+  <div id="order-confirmation" class="container">
+
   </div>
 </body>
 
