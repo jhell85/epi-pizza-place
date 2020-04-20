@@ -7,8 +7,7 @@
 .hidden {
   display: none;
 }
-.order-background{
-  background-image: url(./../img/blank-note.jpeg);
-  background-repeat: no-repeat;
-  background-size: cover;
+.order-boarder{
+    border: 5px solid #7D293A;
+    border-radius: 13px;
 }
